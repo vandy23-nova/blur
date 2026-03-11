@@ -1,12 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2026-02-25.clover'
-});
+// Lazy Stripe initialization to prevent build-time errors
+function getStripe() {
+  const apiKey = process.env.STRIPE_SECRET_KEY;
+  if (!apiKey) {
+    throw new Error('STRIPE_SECRET_KEY not configured');
+  }
+  return new Stripe(apiKey, {
+    apiVersion: '2024-11-20.acacia'
+  });
+}
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if Stripe is configured
+    if (!process.env.STRIPE_SECRET_KEY) {
+      return NextResponse.json(
+        { error: 'Payment system not configured. Please contact support.' },
+        { status: 503 }
+      );
+    }
+
+    const stripe = getStripe();
     const { priceId, credits, price } = await request.json();
 
     // TODO: Get actual user ID from session

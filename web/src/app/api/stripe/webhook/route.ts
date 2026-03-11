@@ -2,15 +2,38 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '../../../../lib/supabase/server';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2026-02-25.clover'
-});
-
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+// Lazy Stripe initialization
+function getStripe() {
+  const apiKey = process.env.STRIPE_SECRET_KEY;
+  if (!apiKey) {
+    throw new Error('STRIPE_SECRET_KEY not configured');
+  }
+  return new Stripe(apiKey, {
+    apiVersion: '2024-11-20.acacia'
+  });
+}
 
 export async function POST(request: NextRequest) {
+  // Check configuration
+  if (!process.env.STRIPE_SECRET_KEY || !process.env.STRIPE_WEBHOOK_SECRET) {
+    return NextResponse.json(
+      { error: 'Webhook not configured' },
+      { status: 503 }
+    );
+  }
+
+  const stripe = getStripe();
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  
   const body = await request.text();
-  const signature = request.headers.get('stripe-signature')!;
+  const signature = request.headers.get('stripe-signature');
+
+  if (!signature) {
+    return NextResponse.json(
+      { error: 'Missing signature' },
+      { status: 400 }
+    );
+  }
 
   let event: Stripe.Event;
 
