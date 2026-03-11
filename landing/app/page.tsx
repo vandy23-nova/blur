@@ -1,133 +1,134 @@
 'use client'
 
 import { Sparkles, Eye, Users, Zap, Lock, Heart, Download, Instagram, Twitter } from 'lucide-react'
+import styles from './styles.module.css'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className={styles.hero}>
         {/* Animated background gradients */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -left-40 w-80 h-80 bg-purple-primary rounded-full opacity-20 blur-3xl animate-float"></div>
-          <div className="absolute top-40 -right-40 w-96 h-96 bg-pink-primary rounded-full opacity-20 blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute -bottom-40 left-1/2 w-96 h-96 bg-purple-primary rounded-full opacity-20 blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className={styles.heroBg}>
+          <div className={`${styles.blob} ${styles.blob1}`}></div>
+          <div className={`${styles.blob} ${styles.blob2}`}></div>
+          <div className={`${styles.blob} ${styles.blob3}`}></div>
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-primary/20 border border-purple-primary/30 rounded-full mb-8 animate-fade-in">
-            <Sparkles className="w-4 h-4 text-purple-primary" />
-            <span className="text-sm font-medium">Join 2M+ Gen Z users</span>
+        <div className={styles.heroContent}>
+          <div className={styles.badge}>
+            <Sparkles size={16} color="#8B5CF6" />
+            <span>Join 2M+ Gen Z users</span>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-black mb-6 leading-tight animate-fade-in">
+          <h1 className={styles.heroTitle}>
             Blur.<br />
             <span className="gradient-text">Reveal.</span><br />
             Connect.
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          <p className={styles.heroSubtitle}>
             The viral anonymous photo app that's taking over your school. Share blurred photos, run polls, and reveal yourself to your crush. 👀
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <button className="group px-8 py-4 bg-gradient-to-r from-purple-primary to-pink-primary rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2">
-              <Download className="w-5 h-5" />
+          <div className={styles.buttonGroup}>
+            <button className={styles.btnPrimary}>
+              <Download size={20} />
               Download for iOS
             </button>
-            <button className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full font-bold text-lg hover:bg-white/20 transition-all duration-200">
+            <button className={styles.btnSecondary}>
               Coming to Android
             </button>
           </div>
 
-          <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
-            <div>
-              <div className="text-4xl font-bold gradient-text">2M+</div>
-              <div className="text-sm text-gray-500 mt-1">Active Users</div>
+          <div className={styles.stats}>
+            <div className={styles.stat}>
+              <div className={styles.statValue}>2M+</div>
+              <div className={styles.statLabel}>Active Users</div>
             </div>
-            <div>
-              <div className="text-4xl font-bold gradient-text">50M+</div>
-              <div className="text-sm text-gray-500 mt-1">Blurs Sent</div>
+            <div className={styles.stat}>
+              <div className={styles.statValue}>50M+</div>
+              <div className={styles.statLabel}>Blurs Sent</div>
             </div>
-            <div>
-              <div className="text-4xl font-bold gradient-text">#1</div>
-              <div className="text-sm text-gray-500 mt-1">Social App</div>
+            <div className={styles.stat}>
+              <div className={styles.statValue}>#1</div>
+              <div className={styles.statLabel}>Social App</div>
             </div>
           </div>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2">
-            <div className="w-1 h-2 bg-white/50 rounded-full"></div>
+        <div className={styles.scrollIndicator}>
+          <div className={styles.scrollBox}>
+            <div className={styles.scrollDot}></div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-32 px-6 relative">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black mb-6">
+      <section id="features" className={styles.section}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>
               Why Everyone's Using <span className="gradient-text">Blur</span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className={styles.sectionDesc}>
               The most fun way to connect with your friends, make new ones, and stay anonymous until you're ready.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className={styles.featuresGrid}>
             <FeatureCard
-              icon={<Eye className="w-8 h-8" />}
+              icon={<Eye size={32} />}
               title="Blur & Reveal"
               description="Share blurred photos. Let your friends guess who you are. Reveal yourself when you want."
-              gradient="from-purple-primary to-purple-600"
+              gradient="linear-gradient(135deg, var(--purple) 0%, #7C3AED 100%)"
             />
             <FeatureCard
-              icon={<Users className="w-8 h-8" />}
+              icon={<Users size={32} />}
               title="Viral Polls"
               description="Run anonymous polls. 'Who's most likely to...' 'Who should date who?' Watch them blow up."
-              gradient="from-pink-primary to-pink-600"
+              gradient="linear-gradient(135deg, var(--pink) 0%, #DB2777 100%)"
             />
             <FeatureCard
-              icon={<Lock className="w-8 h-8" />}
+              icon={<Lock size={32} />}
               title="100% Anonymous"
               description="No one knows it's you until you reveal. Say what you really think. Be yourself."
-              gradient="from-purple-600 to-pink-primary"
+              gradient="linear-gradient(135deg, #7C3AED 0%, var(--pink) 100%)"
             />
             <FeatureCard
-              icon={<Heart className="w-8 h-8" />}
+              icon={<Heart size={32} />}
               title="Crush Mode"
               description="Like someone? Send them a blurred hint. They'll never know unless you want them to. 💕"
-              gradient="from-pink-600 to-purple-primary"
+              gradient="linear-gradient(135deg, #DB2777 0%, var(--purple) 100%)"
             />
             <FeatureCard
-              icon={<Zap className="w-8 h-8" />}
+              icon={<Zap size={32} />}
               title="Viral Loops"
               description="Tag friends, start chains, blow up group chats. Every reveal creates more buzz."
-              gradient="from-purple-primary to-pink-primary"
+              gradient="linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%)"
             />
             <FeatureCard
-              icon={<Sparkles className="w-8 h-8" />}
+              icon={<Sparkles size={32} />}
               title="Made for Gen Z"
               description="No old people. No cringe. Just you and your friends being real."
-              gradient="from-pink-primary to-purple-600"
+              gradient="linear-gradient(135deg, var(--pink) 0%, #7C3AED 100%)"
             />
           </div>
         </div>
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-32 px-6 bg-gradient-to-b from-black via-purple-primary/5 to-black">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black mb-6">
+      <section id="how-it-works" className={styles.section} style={{ background: 'linear-gradient(to bottom, var(--black) 0%, rgba(139, 92, 246, 0.05) 50%, var(--black) 100%)' }}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>
               So Simple, It's <span className="gradient-text">Addictive</span>
             </h2>
-            <p className="text-xl text-gray-400">Get started in 3 steps. Literally.</p>
+            <p className={styles.sectionDesc}>Get started in 3 steps. Literally.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className={styles.stepsGrid}>
             <StepCard
               number="1"
               title="Take a Photo"
@@ -145,79 +146,75 @@ export default function Home() {
             />
           </div>
 
-          <div className="mt-20 text-center">
-            <div className="inline-block p-8 bg-gradient-to-br from-purple-primary/20 to-pink-primary/20 border border-purple-primary/30 rounded-3xl backdrop-blur-sm">
-              <p className="text-2xl font-bold mb-4">Ready to go viral?</p>
-              <p className="text-gray-400 mb-6">Join your friends on Blur today</p>
-              <button className="px-8 py-4 bg-gradient-to-r from-purple-primary to-pink-primary rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-200 inline-flex items-center gap-2">
-                <Download className="w-5 h-5" />
-                Download Now
-              </button>
-            </div>
+          <div className={styles.ctaBox}>
+            <p className={styles.ctaTitle}>Ready to go viral?</p>
+            <p className={styles.ctaDesc}>Join your friends on Blur today</p>
+            <button className={styles.btnPrimary}>
+              <Download size={20} />
+              Download Now
+            </button>
           </div>
         </div>
       </section>
 
       {/* Download Section */}
-      <section id="download" className="py-32 px-6 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-primary rounded-full opacity-10 blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-primary rounded-full opacity-10 blur-3xl"></div>
+      <section id="download" className={styles.section} style={{ position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0 }}>
+          <div style={{ position: 'absolute', top: 0, left: '25%', width: '384px', height: '384px', background: 'var(--purple)', borderRadius: '50%', opacity: 0.1, filter: 'blur(80px)' }}></div>
+          <div style={{ position: 'absolute', bottom: 0, right: '25%', width: '384px', height: '384px', background: 'var(--pink)', borderRadius: '50%', opacity: 0.1, filter: 'blur(80px)' }}></div>
         </div>
 
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-5xl md:text-7xl font-black mb-8">
+        <div className={styles.container} style={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
+          <h2 style={{ fontSize: 'clamp(36px, 10vw, 72px)', fontWeight: 900, marginBottom: '32px' }}>
             Don't Get <span className="gradient-text">Left Out</span>
           </h2>
-          <p className="text-2xl text-gray-400 mb-12">
+          <p style={{ fontSize: '24px', color: 'var(--gray-400)', marginBottom: '48px' }}>
             Everyone at your school is already on Blur. What are you waiting for?
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <button className="px-10 py-5 bg-gradient-to-r from-purple-primary to-pink-primary rounded-full font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-200 flex items-center justify-center gap-3 glow-purple">
-              <Download className="w-6 h-6" />
+          <div className={styles.buttonGroup} style={{ marginBottom: '48px' }}>
+            <button className={`${styles.btnPrimary} glow-purple`} style={{ padding: '20px 40px', fontSize: '20px' }}>
+              <Download size={24} />
               Download for iPhone
             </button>
-            <button className="px-10 py-5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full font-bold text-xl hover:bg-white/20 transition-all duration-200">
+            <button className={styles.btnSecondary} style={{ padding: '20px 40px', fontSize: '20px' }}>
               Get on Waitlist (Android)
             </button>
           </div>
 
-          <p className="text-sm text-gray-500">
+          <p style={{ fontSize: '14px', color: 'var(--gray-500)' }}>
             Free to download. No ads. No BS. Ages 13+
           </p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-16 px-6 border-t border-white/10">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div>
-              <h3 className="text-3xl font-black gradient-text mb-2">Blur</h3>
-              <p className="text-gray-500 text-sm">The viral social app for Gen Z</p>
-            </div>
-
-            <div className="flex gap-6">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Instagram className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter className="w-6 h-6" />
-              </a>
-            </div>
-
-            <div className="flex flex-wrap gap-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
-              <a href="#" className="hover:text-white transition-colors">Support</a>
-              <a href="#" className="hover:text-white transition-colors">Contact</a>
-            </div>
+      <footer className={styles.footer}>
+        <div className={styles.footerContent}>
+          <div className={styles.footerBrand}>
+            <h3 className={styles.footerLogo}>Blur</h3>
+            <p className={styles.footerTagline}>The viral social app for Gen Z</p>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-white/10 text-center text-sm text-gray-500">
-            © 2024 Blur. All rights reserved. Made with 💜 for Gen Z.
+          <div className={styles.footerSocial}>
+            <a href="#" className={styles.socialLink}>
+              <Instagram size={24} />
+            </a>
+            <a href="#" className={styles.socialLink}>
+              <Twitter size={24} />
+            </a>
           </div>
+
+          <div className={styles.footerLinks}>
+            <a href="#" className={styles.footerLink}>Privacy</a>
+            <a href="#" className={styles.footerLink}>Terms</a>
+            <a href="#" className={styles.footerLink}>Support</a>
+            <a href="#" className={styles.footerLink}>Contact</a>
+          </div>
+        </div>
+
+        <div className={styles.footerBottom}>
+          © 2024 Blur. All rights reserved. Made with 💜 for Gen Z.
         </div>
       </footer>
     </main>
@@ -231,12 +228,12 @@ function FeatureCard({ icon, title, description, gradient }: {
   gradient: string
 }) {
   return (
-    <div className="group p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl hover:border-purple-primary/50 transition-all duration-300 hover:scale-105">
-      <div className={`inline-flex p-3 bg-gradient-to-br ${gradient} rounded-2xl mb-4 group-hover:shadow-lg transition-shadow`}>
+    <div className={styles.featureCard}>
+      <div className={styles.featureIcon} style={{ background: gradient }}>
         {icon}
       </div>
-      <h3 className="text-2xl font-bold mb-3">{title}</h3>
-      <p className="text-gray-400 leading-relaxed">{description}</p>
+      <h3 className={styles.featureTitle}>{title}</h3>
+      <p className={styles.featureDesc}>{description}</p>
     </div>
   )
 }
@@ -247,12 +244,12 @@ function StepCard({ number, title, description }: {
   description: string
 }) {
   return (
-    <div className="text-center">
-      <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-primary to-pink-primary rounded-full text-3xl font-black mb-6 glow-purple">
+    <div className={styles.stepCard}>
+      <div className={styles.stepNumber}>
         {number}
       </div>
-      <h3 className="text-2xl font-bold mb-4">{title}</h3>
-      <p className="text-gray-400 text-lg leading-relaxed">{description}</p>
+      <h3 className={styles.stepTitle}>{title}</h3>
+      <p className={styles.stepDesc}>{description}</p>
     </div>
   )
 }
