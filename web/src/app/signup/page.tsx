@@ -33,24 +33,28 @@ export default function SignupPage() {
     setLoading(true);
 
     try {
-      const { data: authData, error: authError } = await supabase.auth.signUp({
+      // Use API endpoint with service_role key (bypasses email confirmation)
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password, username }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Signup failed');
+      }
+
+      // Success - now log the user in
+      const { error: loginError } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
-      if (authError) throw authError;
-      if (!authData.user) throw new Error('No user returned');
-
-      // Create user profile
-      const { error: profileError } = await supabase
-        .from('users')
-        .insert({
-          id: authData.user.id,
-          username,
-          coins: 100,
-        });
-
-      if (profileError) throw profileError;
+      if (loginError) throw loginError;
 
       router.push('/dashboard');
       router.refresh();
