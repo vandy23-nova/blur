@@ -9,7 +9,7 @@ function getStripe() {
     throw new Error('STRIPE_SECRET_KEY not configured');
   }
   return new Stripe(apiKey, {
-    apiVersion: '2024-11-20.acacia'
+    apiVersion: '2026-02-25.clover'
   });
 }
 
