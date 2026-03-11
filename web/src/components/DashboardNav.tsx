@@ -1,8 +1,8 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { createClient } from '@/lib/supabase/client';
-import type { User } from '@/lib/types';
+import { createClient } from '../lib/supabase/client';
+import type { User } from '../lib/types';
 
 export default function DashboardNav({ user }: { user: User | null }) {
   const router = useRouter();

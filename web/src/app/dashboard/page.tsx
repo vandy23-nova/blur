@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
-import { createClient } from '@/lib/supabase/server';
-import BlurFeed from '@/components/BlurFeed';
-import DashboardNav from '@/components/DashboardNav';
+import { createClient } from '../../lib/supabase/server';
+import BlurFeed from '../../components/BlurFeed';
+import DashboardNav from '../../components/DashboardNav';
 
 export default async function DashboardPage() {
   const supabase = createClient();

@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { createClient } from '@/lib/supabase/client';
-import type { Blur } from '@/lib/types';
+import { createClient } from '../lib/supabase/client';
+import type { Blur } from '../lib/types';
 
 export default function BlurFeed({ initialBlurs, userId }: { initialBlurs: Blur[], userId: string }) {
   const [blurs, setBlurs] = useState(initialBlurs);
