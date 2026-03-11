@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 interface GlassButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
