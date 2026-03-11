@@ -55,8 +55,9 @@
         "origin": false
       },
       "eas": {
-        "projectId": "your-eas-project-id"
+        "projectId": "6c2eecf0-d47f-4327-8486-60dbf624d780"
       }
-    }
+    },
+    "owner": "nova-app-factory"
   }
 }
